@@ -22,6 +22,7 @@ if __name__ == "__main__":
     plt.ylabel("Y Axis", color="#8A0719E4", fontsize=12)
     plt.title("Function Plot", color="#000000", fontsize=14)
     plt.legend()
+    plt.grid(linestyle="--", color="gray", alpha=0.6, linewidth=0.7)
 
     plt.xticks(np.arange(0, 9, 1))
     plt.yticks(np.arange(-1.5, 1.5, 0.5))

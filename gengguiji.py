@@ -12,7 +12,7 @@ den = [1, 3, 2, 0]
 sys = ct.tf(num, den)
 
 # 创建画布
-plt.figure(figsize=(6, 6), dpi=80)
+plt.figure(figsize=(8, 6), dpi=80)
 
 # 绘制根轨迹
 gains = np.linspace(0, 20, 8000)
@@ -20,10 +20,10 @@ ct.rlocus(sys, gains=gains, grid=False)
 
 plt.xlim(-4, 1)
 plt.ylim(-3, 3)
-# plt.axis("equal")
+plt.axis("equal")
 
 # 网格和标题
-plt.grid(True, linestyle="--", alpha=0.6)
+plt.grid(linestyle="--", color="gray", alpha=0.6, linewidth=0.7)
 plt.title("控制系统根轨迹", fontsize=14)
 plt.xlabel("实轴 Re(s)", fontsize=12)
 plt.ylabel("虚轴 Im(s)", fontsize=12)
