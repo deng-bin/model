@@ -2,7 +2,6 @@ import numpy as np
 import control as ct
 import matplotlib.pyplot as plt
 
-# 中文正常显示 + 负号正常
 plt.rcParams["font.sans-serif"] = ["SimHei"]
 plt.rcParams["axes.unicode_minus"] = False
 
