@@ -1,41 +1,42 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
 
 plt.rcParams.update(
     {
         "text.usetex": True,
-        "text.latex.preamble": r"\usepackage{amsmath} \usepackage{amssymb}",
+        "text.latex.preamble": r"\usepackage{amsmath} \usepackage{amssymb} \usepackage{mathrsfs}",
         "font.family": "serif",
         "font.serif": ["Computer Modern"],
+        "axes.labelsize": 12,
+        "font.size": 11,
+        "legend.fontsize": 10,
+        "xtick.labelsize": 9,
+        "ytick.labelsize": 9,
+        "figure.dpi": 80,
+        "axes.unicode_minus": False,
     }
 )
 
-plt.rcParams["axes.unicode_minus"] = False
-sns.set_style("whitegrid")
-sns.set_palette("husl")
-
 if __name__ == "__main__":
     x = np.linspace(0, 8, 1000)
-    y1 = np.cos(4 * x) * np.exp(-x / 2)
-    y2 = np.exp(-x / 2)
-    y3 = -np.exp(-x / 2)
+    y = np.cos(4 * x) * np.exp(-x / 2)
+    envelope_pos = np.exp(-x / 2)
+    envelope_neg = -np.exp(-x / 2)
 
-    plt.figure(figsize=(8, 5), dpi=80)
+    _, ax = plt.subplots(figsize=(8, 5))
 
-    plt.plot(x, y1, color="#e21743e9", lw=2.5, label=r"$y=\cos(4x)e^{-x/2}$")
-    plt.plot(x, y2, color="#4053c0e9", lw=2, linestyle="--", label=r"$y=e^{-x/2}$")
-    plt.plot(x, y3, color="#20d73ce9", lw=2, linestyle="--", label=r"$y=-e^{-x/2}$")
+    ax.plot(x, y, color="#e21743", alpha=0.91, lw=2.5, label=r"$y=\cos(4x)e^{-x/2}$")
+    ax.plot(x, envelope_pos, color="#4053c0", alpha=0.91, lw=2, linestyle="--", label=r"$y=e^{-x/2}$")
+    ax.plot(x, envelope_neg, color="#20d73c", alpha=0.91, lw=2, linestyle="--", label=r"$y=-e^{-x/2}$")
 
-    plt.xlabel("$X Axis$", color="#8A0719E4", fontsize=12)
-    plt.ylabel("$Y Axis$", color="#8A0719E4", fontsize=12)
-    plt.title("$Function Plot$", color="#000000", fontsize=14)
-    plt.legend()
-    plt.grid(linestyle="--", color="gray", alpha=0.6, linewidth=0.7)
+    ax.set_xlabel("$X Axis$", color="#8A0719", fontsize=12)
+    ax.set_ylabel("$Y Axis$", color="#8A0719", fontsize=12)
+    ax.set_title("$Function Plot$", color="#000000", fontsize=14)
+    ax.legend()
+    ax.grid(linestyle="--", color="gray", alpha=0.6, linewidth=0.7)
 
-    plt.xticks(np.arange(0, 9, 1))
-    plt.yticks(np.arange(-1.5, 1.5, 0.5))
-
-    plt.xlim(0, 8)
-    plt.ylim(-1.5, 1.5)
+    ax.set_xticks(np.arange(0, 9, 1))
+    ax.set_yticks(np.arange(-1.5, 1.5, 0.5))
+    ax.set_xlim(0, 8)
+    ax.set_ylim(-1.5, 1.5)
     plt.show()
